@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ECacheProgress_Example' do
+  pod 'ECacheProgress', :path => '../'
+
+  target 'ECacheProgress_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
