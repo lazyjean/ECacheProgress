@@ -1,0 +1,6 @@
+framework module Pods_ECacheProgress_Tests {
+  umbrella header "Pods-ECacheProgress_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

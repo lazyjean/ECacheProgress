@@ -1,0 +1,6 @@
+framework module ECacheProgress {
+  umbrella header "ECacheProgress-umbrella.h"
+
+  export *
+  module * { export * }
+}
