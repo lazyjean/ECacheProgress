@@ -30,27 +30,27 @@ open class ECacheProgress: UIControl {
     }
     
     //两侧圆角
-    @IBInspectable var rounding: Bool = false
+    @IBInspectable public var rounding: Bool = false
     
     //背景色
-    @IBInspectable var fullColor: UIColor = UIColor.gray
+    @IBInspectable public var fullColor: UIColor = UIColor.gray
     
     //进度条颜色
-    @IBInspectable var trackColor: UIColor = UIColor.yellow
+    @IBInspectable public var trackColor: UIColor = UIColor.yellow
     
     //缓冲进度条颜色
-    @IBInspectable var cacheTrackColor: UIColor = UIColor.red
+    @IBInspectable public var cacheTrackColor: UIColor = UIColor.red
     
     //中间指示图标
-    @IBInspectable var indicatorImage: UIImage?
+    @IBInspectable public var indicatorImage: UIImage?
     
     //是否显示指示图标
-    @IBInspectable var showIndicator: Bool = false
+    @IBInspectable public var showIndicator: Bool = false
     
     //上下缩进去的空立日大
     var progressInsets: UIEdgeInsets = .zero
     
-    @IBInspectable var progressInsetX: CGFloat = 0 {
+    @IBInspectable public var progressInsetX: CGFloat = 0 {
         didSet {
             progressInsets.top = progressInsetX
             progressInsets.bottom = progressInsetX
