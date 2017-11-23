@@ -132,6 +132,7 @@ open class ECacheProgress: UIControl {
         progressMask.frame = frame
         
         indicator.frame = CGRect(origin: .zero, size: indicatorSize)
+        indicator.center = CGPoint(x: progressMask.frame.maxX, y: progressMask.frame.midY)
     }
     
     open override func prepareForInterfaceBuilder() {
