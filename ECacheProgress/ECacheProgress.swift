@@ -47,8 +47,16 @@ open class ECacheProgress: UIControl {
     //是否显示指示图标
     @IBInspectable var showIndicator: Bool = false
     
-    //
-    @IBInspectable var progressInsets: UIEdgeInsets = .zero
+    //上下缩进去的空立日大
+    var progressInsets: UIEdgeInsets = .zero
+    
+    @IBInspectable var progressInsetX: CGFloat = 0 {
+        didSet {
+            progressInsets.top = progressInsetX
+            progressInsets.bottom = progressInsetX
+            setNeedsLayout()
+        }
+    }
     
     private var cacheProgressView = UIView()
     private var cacheProgressMask = UIView()

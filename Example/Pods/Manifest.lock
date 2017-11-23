@@ -1,5 +1,5 @@
 PODS:
-  - ECacheProgress (0.1.0)
+  - ECacheProgress (0.1.1)
 
 DEPENDENCIES:
   - ECacheProgress (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  ECacheProgress: d9c6aad947d8bf72f1b8e6a634d9be7a2ab15f2e
+  ECacheProgress: e568eb7281872ce40a619a56fe20a12d6aa818a5
 
 PODFILE CHECKSUM: e3d6ef12982524c2bdb9db5c4092040defe972e3
 
