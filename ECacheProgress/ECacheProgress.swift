@@ -12,7 +12,7 @@ import UIKit
 open class ECacheProgress: UIControl {
 
     //进度0-1
-    @IBInspectable var progress: CGFloat = 0.5 {
+    @IBInspectable public var progress: CGFloat = 0.5 {
         didSet {
             progress = min(progress, 1)
             progress = max(progress, 0)
@@ -21,7 +21,7 @@ open class ECacheProgress: UIControl {
     }
     
     //缓冲进度0-1
-    @IBInspectable var cacheProgress: CGFloat = 0.6 {
+    @IBInspectable public var cacheProgress: CGFloat = 0.6 {
         didSet {
             cacheProgress = min(cacheProgress, 1)
             cacheProgress = max(cacheProgress, 0)
