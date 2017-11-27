@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 # Be sure to run `pod lib lint ECacheProgress.podspec' to ensure this is a
 # valid spec before submitting.
@@ -8,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ECacheProgress'
-  s.version          = '0.1.4'
+  s.version          = '0.1.6'
   s.summary          = '带有两层进度的进度条，用于视频音频缓冲的展示'
 
 # This description is used to generate tags and improve search results.
