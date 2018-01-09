@@ -135,6 +135,56 @@ open class ECacheProgress: UIControl {
         indicator.center = CGPoint(x: progressMask.frame.maxX, y: progressMask.frame.midY)
     }
     
+    var touching: UITouch?
+    var timer: Timer?
+    var moveTrackBar: DispatchWorkItem?
+    var dragging: Bool = false
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        touching = touches.first
+        let item = DispatchWorkItem { [weak self] in
+            if let full = self?.fullView, let pt = self?.touching?.location(in: full) {
+                self?.dragging = true
+                self?.progress = pt.x/full.frame.size.width
+            }
+        }
+        
+        //延时调用
+        let (seconds, frac) = modf(Date().timeIntervalSince1970 + 0.5)
+        let nsec: Double = frac*Double(NSEC_PER_SEC)
+        let walltime = timespec(tv_sec: Int(seconds), tv_nsec: Int(nsec))
+        let time = DispatchWallTime(timespec: walltime)
+        DispatchQueue.main.asyncAfter(wallDeadline: time, execute: item)
+        
+        self.moveTrackBar = item
+    }
+    
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        if let item = moveTrackBar, !item.isCancelled {
+            item.cancel()
+        }
+        
+        if let pt = self.touching?.location(in: self.fullView) {
+            self.dragging = true
+            progress = pt.x/fullView.frame.size.width
+        }
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
+        if let item = moveTrackBar, !item.isCancelled {
+            item.cancel()
+        }
+        
+        self.dragging = false
+        self.sendActions(for: UIControlEvents.valueChanged)
+    }
+    
     open override func prepareForInterfaceBuilder() {
         
     }
