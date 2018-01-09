@@ -12,7 +12,7 @@ import UIKit
 open class ECacheProgress: UIControl {
 
     //进度0-1
-    @IBInspectable var progress: CGFloat = 0.5 {
+    @IBInspectable public var progress: CGFloat = 0.5 {
         didSet {
             progress = min(progress, 1)
             progress = max(progress, 0)
@@ -21,7 +21,7 @@ open class ECacheProgress: UIControl {
     }
     
     //缓冲进度0-1
-    @IBInspectable var cacheProgress: CGFloat = 0.6 {
+    @IBInspectable public var cacheProgress: CGFloat = 0.6 {
         didSet {
             cacheProgress = min(cacheProgress, 1)
             cacheProgress = max(cacheProgress, 0)
@@ -30,25 +30,33 @@ open class ECacheProgress: UIControl {
     }
     
     //两侧圆角
-    @IBInspectable var rounding: Bool = false
+    @IBInspectable public var rounding: Bool = false
     
     //背景色
-    @IBInspectable var fullColor: UIColor = UIColor.gray
+    @IBInspectable public var fullColor: UIColor = UIColor.gray
     
     //进度条颜色
-    @IBInspectable var trackColor: UIColor = UIColor.yellow
+    @IBInspectable public var trackColor: UIColor = UIColor.yellow
     
     //缓冲进度条颜色
-    @IBInspectable var cacheTrackColor: UIColor = UIColor.red
+    @IBInspectable public var cacheTrackColor: UIColor = UIColor.red
     
     //中间指示图标
-    @IBInspectable var indicatorImage: UIImage?
+    @IBInspectable public var indicatorImage: UIImage?
     
     //是否显示指示图标
-    @IBInspectable var showIndicator: Bool = false
+    @IBInspectable public var showIndicator: Bool = false
     
-    //
-    @IBInspectable var progressInsets: UIEdgeInsets = .zero
+    //上下缩进去的空立日大
+    var progressInsets: UIEdgeInsets = .zero
+    
+    @IBInspectable public var progressInsetX: CGFloat = 0 {
+        didSet {
+            progressInsets.top = progressInsetX
+            progressInsets.bottom = progressInsetX
+            setNeedsLayout()
+        }
+    }
     
     private var cacheProgressView = UIView()
     private var cacheProgressMask = UIView()
@@ -124,6 +132,7 @@ open class ECacheProgress: UIControl {
         progressMask.frame = frame
         
         indicator.frame = CGRect(origin: .zero, size: indicatorSize)
+        indicator.center = CGPoint(x: progressMask.frame.maxX, y: progressMask.frame.midY)
     }
     
     open override func prepareForInterfaceBuilder() {

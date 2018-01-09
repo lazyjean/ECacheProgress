@@ -1,6 +1,6 @@
 {
   "name": "ECacheProgress",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "summary": "带有两层进度的进度条，用于视频音频缓冲的展示",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/lazyjean/ECacheProgress",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/lazyjean/ECacheProgress.git",
-    "tag": "0.1.0"
+    "tag": "0.1.4"
   },
   "platforms": {
     "ios": "9.0"
