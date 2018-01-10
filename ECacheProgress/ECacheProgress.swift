@@ -16,7 +16,9 @@ open class ECacheProgress: UIControl {
         didSet {
             progress = min(progress, 1)
             progress = max(progress, 0)
-            setNeedsLayout()
+            if dragging == false {
+                setNeedsLayout()
+            }
         }
     }
     
@@ -25,7 +27,9 @@ open class ECacheProgress: UIControl {
         didSet {
             cacheProgress = min(cacheProgress, 1)
             cacheProgress = max(cacheProgress, 0)
-            setNeedsLayout()
+            if dragging == false {
+                setNeedsLayout()
+            }
         }
     }
     
@@ -148,6 +152,7 @@ open class ECacheProgress: UIControl {
             if let full = self?.fullView, let pt = self?.touching?.location(in: full) {
                 self?.dragging = true
                 self?.progress = pt.x/full.frame.size.width
+                self?.setNeedsLayout()
             }
         }
         
@@ -171,6 +176,7 @@ open class ECacheProgress: UIControl {
         if let pt = self.touching?.location(in: self.fullView) {
             self.dragging = true
             progress = pt.x/fullView.frame.size.width
+            setNeedsLayout()
         }
     }
     
@@ -182,6 +188,7 @@ open class ECacheProgress: UIControl {
         }
         
         self.dragging = false
+        setNeedsLayout()
         self.sendActions(for: UIControlEvents.valueChanged)
     }
     

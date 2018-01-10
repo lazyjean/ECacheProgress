@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ECacheProgress'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = '带有两层进度的进度条，用于视频音频缓冲的展示'
 
 # This description is used to generate tags and improve search results.
