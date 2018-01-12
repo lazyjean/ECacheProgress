@@ -51,6 +51,8 @@ open class ECacheProgress: UIControl {
     //是否显示指示图标
     @IBInspectable public var showIndicator: Bool = false
     
+    public var dragging: Bool = false
+    
     //上下缩进去的空立日大
     var progressInsets: UIEdgeInsets = .zero
     
@@ -142,7 +144,6 @@ open class ECacheProgress: UIControl {
     var touching: UITouch?
     var timer: Timer?
     var moveTrackBar: DispatchWorkItem?
-    var dragging: Bool = false
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
