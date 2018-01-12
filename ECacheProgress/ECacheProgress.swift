@@ -188,9 +188,11 @@ open class ECacheProgress: UIControl {
             item.cancel()
         }
         
-        self.dragging = false
         setNeedsLayout()
         self.sendActions(for: UIControlEvents.valueChanged)
+        
+        //外面可以根据valueChanged事件事seek视频或音频的位置，根据dragging来决定要不要更新progress
+        self.dragging = false
     }
     
     open override func prepareForInterfaceBuilder() {
